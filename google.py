@@ -23,14 +23,14 @@ class Translate_API():
             'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
             'Accept-Encoding': 'deflate, br',
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-            'Referer': 'https://' + self.host,
+            'Referer': 'http://' + self.host,
             'Connection': 'keep-alive',
             'Cache-Control': 'max-age=0'
         }
         return headers
 
     def get_Tkk(self):
-        url = 'https://' + self.host
+        url = 'http://' + self.host
         try:
             req = Request(url=url, headers=self.headers())
             resp = urlopen(req).read()
@@ -104,7 +104,7 @@ class Translate_API():
             'v': '1.0',
             'source': 'is',
         }
-        url = 'https://' + self.host + '/translate_a/t?'
+        url = 'http://' + self.host + '/translate_a/t?'
         if self.get_Token(query):
             return True
         params['tk'] = self.ToKen
@@ -153,4 +153,4 @@ if __name__ == "__main__":
     except Exception as e:
         info = "翻译失败:{}".format(e)
     finally:
-        sys.stdout.write(info)
+        sys.stdout.write(">>> {0}".format(info))
