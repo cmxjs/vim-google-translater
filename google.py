@@ -138,7 +138,6 @@ def str_decode(word):
 
 def get_word_info(string):
     translate_obj = Translate_API()
-    translate_obj.get_Token(string)
     tl = 'en' if contain_chinese(string) else 'zh-CH'
     translate_obj.translate(query=string, tl=tl)
     return translate_obj.result
